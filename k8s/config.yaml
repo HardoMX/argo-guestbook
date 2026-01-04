@@ -4,6 +4,6 @@ metadata:
   name: andreas-db-config
 data:
   db-name: guestbook
-  db-host: postgres
+  db-host: andreas-postgres
   redis-host: redis
   redis-port: "6379"
