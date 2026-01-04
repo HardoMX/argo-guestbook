@@ -37,7 +37,7 @@ jobs:
       - name: Build frontend container image
         run: |
           docker build -f frontend/Containerfile -t ghcr.io/hardomx/guestbook-frontend:latest ./frontend
-          docker build -f frontend/Containerfile -t ghcr.io/hardomx/guestbook-frontend:${{ steps.image-tag.outputs.tag }} ./backend
+          docker build -f frontend/Containerfile -t ghcr.io/hardomx/guestbook-frontend:${{ steps.image-tag.outputs.tag }} ./frontend
 
       - name: Push containers
         run: |
