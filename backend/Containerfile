@@ -16,4 +16,6 @@ COPY --from=build /bin/guestbook-api /bin/guestbook-api
 
 EXPOSE 8080
 
+LABEL org.opencontainers.image.source https://github.com/hardomx/argo-guestbook
+
 CMD [ "/bin/guestbook-api" ]
