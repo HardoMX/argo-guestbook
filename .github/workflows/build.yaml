@@ -32,16 +32,16 @@ jobs:
       - name: Build backend container image
         run: |
           docker build -f backend/Containerfile -t ghcr.io/hardomx/guestbook-backend:latest ./backend
-          docker build -f backend/Containerfile -t ghcr.io/hardomx/guestbook-backend:${{ steps.image-tag.outputs.IMAGE_TAG }} ./backend
+          docker build -f backend/Containerfile -t ghcr.io/hardomx/guestbook-backend:${{ steps.image-tag.outputs.tag }} ./backend
 
       - name: Build frontend container image
         run: |
           docker build -f frontend/Containerfile -t ghcr.io/hardomx/guestbook-frontend:latest ./frontend
-          docker build -f frontend/Containerfile -t ghcr.io/hardomx/guestbook-frontend:${{ steps.image-tag.outputs.IMAGE_TAG }} ./backend
+          docker build -f frontend/Containerfile -t ghcr.io/hardomx/guestbook-frontend:${{ steps.image-tag.outputs.tag }} ./backend
 
       - name: Push containers
         run: |
-          docker push ghcr.io/hardomx/guestbook-backend:${{ steps.image-tag.outputs.IMAGE_TAG }}
+          docker push ghcr.io/hardomx/guestbook-backend:${{ steps.image-tag.outputs.tag }}
           docker push ghcr.io/hardomx/guestbook-backend:latest
-          docker push ghcr.io/hardomx/guestbook-frontend:${{ steps.image-tag.outputs.IMAGE_TAG }}
+          docker push ghcr.io/hardomx/guestbook-frontend:${{ steps.image-tag.outputs.tag }}
           docker push ghcr.io/hardomx/guestbook-frontend:latest
