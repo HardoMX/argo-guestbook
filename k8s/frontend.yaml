@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: andreas-frontend
-          image: ghcr.io/Hardomx/guestbook-frontend:latest
+          image: ghcr.io/hardomx/guestbook-frontend:latest
           imagePullPolicy: Always
 ---
 apiVersion: v1

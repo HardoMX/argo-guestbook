@@ -140,7 +140,7 @@ spec:
     spec:
       containers:
         - name: andreas-backend
-          image: ghcr.io/HardoMX/guestbook-backend:latest
+          image: ghcr.io/hardomx/guestbook-backend:latest
           ports:
             - containerPort: 8080
           env:
