@@ -6,7 +6,7 @@ on:
       - "main"
     paths:
       - "backend/**"
-      - ".github/workflows/build-backend"
+      - ".github/workflows/build-backend.yaml"
 
 jobs:
   build:
