@@ -6,8 +6,7 @@ on:
       - "main"
     paths:
       - "backend/**"
-      - "frontend/**"
-      - ".github/workflows/**"
+      - ".github/workflows/build-backend"
 
 jobs:
   build:
@@ -33,20 +32,13 @@ jobs:
           echo "tag=${IMAGE_TAG}" >> $GITHUB_OUTPUT
           echo "Generated tag: ${IMAGE_TAG}"
 
-        # Build and deploy images
+        # Build and push image
       - name: Build backend container image
         run: |
           docker build -f backend/Containerfile -t ghcr.io/hardomx/guestbook-backend:latest ./backend
           docker build -f backend/Containerfile -t ghcr.io/hardomx/guestbook-backend:${{ steps.image-tag.outputs.tag }} ./backend
 
-      - name: Build frontend container image
-        run: |
-          docker build -f frontend/Containerfile -t ghcr.io/hardomx/guestbook-frontend:latest ./frontend
-          docker build -f frontend/Containerfile -t ghcr.io/hardomx/guestbook-frontend:${{ steps.image-tag.outputs.tag }} ./frontend
-
       - name: Push containers
         run: |
           docker push ghcr.io/hardomx/guestbook-backend:${{ steps.image-tag.outputs.tag }}
           docker push ghcr.io/hardomx/guestbook-backend:latest
-          docker push ghcr.io/hardomx/guestbook-frontend:${{ steps.image-tag.outputs.tag }}
-          docker push ghcr.io/hardomx/guestbook-frontend:latest
